@@ -10,7 +10,7 @@ export const PrimaryNavSection: FC<PrimaryNavSectionProps> = ({
   items,
 }) => {
   return (
-    <div
+    <section
       id={`${title} section`}
       className="grid grid-flow-row gap-2 items-start"
     >
@@ -23,6 +23,6 @@ export const PrimaryNavSection: FC<PrimaryNavSectionProps> = ({
           icon={item.icon}
         />
       ))}
-    </div>
+    </section>
   );
 };

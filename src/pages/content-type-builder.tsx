@@ -1,4 +1,4 @@
-import { MainLayout } from "../layout/MainLayout";
+import { MainLayout } from "../layouts/Main.Layout";
 
 export default function Builder() {
   return (
