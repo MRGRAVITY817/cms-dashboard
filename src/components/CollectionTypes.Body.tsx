@@ -6,10 +6,13 @@ import {
   IoIosSettings,
   IoMdArrowDropdown,
 } from "react-icons/io";
-import { CheckIcon } from "@heroicons/react/outline";
+import { CheckIcon, FolderAddIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const CollectionTypesBody = () => {
   const [selectAll, setSelectAll] = useState<boolean>(false);
+  const router = useRouter();
 
   return (
     <main id={`collection-types body`} className="mt-20">
@@ -62,6 +65,17 @@ export const CollectionTypesBody = () => {
           id="content-separator"
           className="border-b border-slate-200 my-4"
         />
+        <div id="content-empty" className="py-20 flex flex-col items-center">
+          <div className="flex justify-center">
+            <FolderAddIcon className="text-indigo-400 w-20" />
+          </div>
+          <h2 className="my-4 ">No content found</h2>
+          <Link href={`${router.asPath}/new`}>
+            <a className="px-3 py-2 bg-indigo-100 border border-indigo-300 text-indigo-600 font-medium rounded-md hover:bg-indigo-50 transition-colors">
+              + Create new entry
+            </a>
+          </Link>
+        </div>
       </div>
     </main>
   );

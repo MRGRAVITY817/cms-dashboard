@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC, ReactElement } from "react";
 
 interface HelpSectionItemProps {
@@ -44,20 +45,22 @@ export const HelpSectionItem: FC<HelpSectionItemProps> = ({
   };
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md flex gap-8 items-center justify-start w-full">
-      <div
-        className={`${outerColor()} w-16 h-16 flex items-center justify-center rounded-sm`}
-      >
+    <Link href="#">
+      <a className="bg-white p-6 rounded-md shadow-md flex gap-8 items-center justify-start w-full">
         <div
-          className={`${innerColor()} w-10 h-10 flex items-center justify-center rounded-sm`}
+          className={`${outerColor()} w-16 h-16 flex items-center justify-center rounded-sm`}
         >
-          {icon}
+          <div
+            className={`${innerColor()} w-10 h-10 flex items-center justify-center rounded-sm`}
+          >
+            {icon}
+          </div>
         </div>
-      </div>
-      <div className="grid grid-flow-row">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
+        <div className="grid grid-flow-row">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      </a>
+    </Link>
   );
 };

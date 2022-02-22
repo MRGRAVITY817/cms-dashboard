@@ -1,7 +1,7 @@
 export const COLLECTION_TYPES = [
   { name: "Product", href: "product" },
   { name: "User", href: "user" },
-  { name: "Post", href: "user" },
+  { name: "Post", href: "post" },
 ];
 export const SINGLE_TYPES = [
   { name: "Title", href: "title" },

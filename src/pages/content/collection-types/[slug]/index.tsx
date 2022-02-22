@@ -8,7 +8,7 @@ interface CollectionTypesProps {
   name?: string;
 }
 
-const Post: NextPage<CollectionTypesProps> = ({ name }) => {
+const CollectionTypes: NextPage<CollectionTypesProps> = ({ name }) => {
   return (
     <ContentManagerLayout>
       <CollectionTypesHeader name={name ?? "Untitled"} />
@@ -17,7 +17,7 @@ const Post: NextPage<CollectionTypesProps> = ({ name }) => {
   );
 };
 
-export default Post;
+export default CollectionTypes;
 
 export const getStaticProps: GetStaticProps<
   CollectionTypesProps,

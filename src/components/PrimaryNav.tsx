@@ -1,6 +1,6 @@
-import { GiQuillInk, GiShoppingCart } from "react-icons/gi";
+import { GiPlug, GiQuillInk, GiShoppingCart } from "react-icons/gi";
 import { IoIosImages, IoIosSettings } from "react-icons/io";
-import { AiFillSmile, AiOutlineBuild } from "react-icons/ai";
+import { AiOutlineBuild } from "react-icons/ai";
 import { PrimaryNavSection } from "./PrimaryNav.Section";
 import Image from "next/image";
 import { PrimaryNavItem } from "./PrimaryNavItem";
@@ -52,7 +52,7 @@ export const PrimaryNav = () => {
             {
               title: "Plugins",
               href: "/plugins",
-              icon: <AiFillSmile size="1.4em" />,
+              icon: <GiPlug size="1.4em" />,
             },
             {
               title: "Marketplace",
