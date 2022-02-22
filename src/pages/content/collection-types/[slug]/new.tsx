@@ -48,7 +48,7 @@ const NewEntry: NextPage<NewEntryProps> = ({ name }) => {
           </button>
         </div>
       </header>
-      <div className="mt-12 flex items-start gap-4 w-full">
+      <div className="mt-20 flex items-start gap-4 w-full">
         <form className="col-span-3 grid grid-cols-2 gap-y-6 gap-x-8 bg-white shadow-md p-6 rounded-md w-3/4">
           {newEntryFields(name).map((field) => (
             <EntryFormInput

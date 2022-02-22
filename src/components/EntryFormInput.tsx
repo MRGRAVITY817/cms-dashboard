@@ -4,8 +4,10 @@ import {
   BooleanInput,
   LongTextInput,
   NumberInput,
+  PasswordInput,
   PriceInput,
   ShortTextInput,
+  TagInput,
 } from "./Fields";
 
 interface EntryFormInputProps {
@@ -21,6 +23,8 @@ export const EntryFormInput: FC<EntryFormInputProps> = ({ name, type }) => {
       {type === "long" && <LongTextInput />}
       {type === "price" && <PriceInput />}
       {type === "number" && <NumberInput />}
+      {type === "tags" && <TagInput />}
+      {type === "password" && <PasswordInput />}
     </div>
   );
 };
