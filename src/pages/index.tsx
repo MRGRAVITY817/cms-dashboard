@@ -1,3 +1,4 @@
+import { CommunityItem } from "@components/CommunityItem";
 import { HelpSectionItem } from "@components/HelpSectionItem";
 import {
   CodeIcon,
@@ -6,6 +7,7 @@ import {
   PencilAltIcon,
   PlayIcon,
 } from "@heroicons/react/outline";
+import { COMMUNITIES } from "@utils/constants";
 import Link from "next/link";
 import { MainLayout } from "../layouts/Main.Layout";
 
@@ -69,7 +71,16 @@ export default function Home() {
               </a>
             </Link>
           </div>
-          <div className="grid grid-cols-2"></div>
+          <div className="grid grid-cols-2 px-2 pt-6 gap-6">
+            {COMMUNITIES.map((c) => (
+              <CommunityItem
+                src={c.src}
+                href={c.href}
+                title={c.title}
+                key={c.href}
+              />
+            ))}
+          </div>
         </section>
       </article>
     </MainLayout>
