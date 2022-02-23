@@ -2,7 +2,7 @@ import { BackButton } from "@components/BackButton";
 import { EntryFormInput } from "@components/EntryFormInput";
 import { BookOpenIcon, PencilIcon } from "@heroicons/react/outline";
 import { ContentManagerLayout } from "@layouts/ContentManager.Layout";
-import { COLLECTION_TYPES } from "@utils/constants";
+import { COLLECTION_TYPES } from "@utils/mockData";
 import {
   EntryProps,
   POST_ENTRY_FIELDS,

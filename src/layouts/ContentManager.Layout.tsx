@@ -1,5 +1,5 @@
 import { SecondaryNavSection } from "@components/SecondaryNav.Section";
-import { COLLECTION_TYPES, SINGLE_TYPES } from "@utils/constants";
+import { COLLECTION_TYPES, SINGLE_TYPES } from "@utils/mockData";
 import { FC } from "react";
 import { MainLayout } from "./Main.Layout";
 import { SecondaryNavLayout } from "./SecondaryNav.Layout";
