@@ -14,32 +14,6 @@ export interface EntryProps {
 
 export type TableData = { field: string; type: FieldType; data: string }[][];
 
-export interface ProductFields {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  stock: number;
-}
-
-export interface UserFields {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  confirmed: boolean;
-}
-
-export interface PostFields {
-  id: number;
-  title: string;
-  summary: string;
-  content: string;
-  tags: string[];
-  createdAt: string;
-  updatedAt: string;
-}
-
 export const PRODUCT_TABLE_FIELDS: EntryProps[] = [
   { name: "id", type: "number" },
   { name: "name", type: "short" },

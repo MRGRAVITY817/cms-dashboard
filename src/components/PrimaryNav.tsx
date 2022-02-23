@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const PrimaryNav = () => {
   return (
-    <div className="h-screen w-full bg-white">
+    <nav className="h-screen w-full bg-white">
       <Link href="/">
         <a
           id="dashboard-main"
@@ -29,7 +29,7 @@ export const PrimaryNav = () => {
         <PrimaryNavItem
           icon={<GiQuillInk size="1.4em" />}
           title="Content Manager"
-          href="/content"
+          href="/content/collection-types/product"
         />
         <PrimaryNavSection
           title="Plugins"
@@ -67,6 +67,6 @@ export const PrimaryNav = () => {
           ]}
         />
       </div>
-    </div>
+    </nav>
   );
 };

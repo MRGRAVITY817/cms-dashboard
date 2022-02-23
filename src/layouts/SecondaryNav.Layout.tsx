@@ -8,7 +8,7 @@ export const SecondaryNavLayout: FC<SecondaryNavLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="h-screen w-full bg-slate-50">
+    <nav className="h-screen w-full bg-slate-50">
       <div className="h-20 flex items-center justify-start pl-4">
         <h2 className="self-center">{title}</h2>
       </div>
@@ -22,6 +22,6 @@ export const SecondaryNavLayout: FC<SecondaryNavLayoutProps> = ({
       >
         {children}
       </div>
-    </div>
+    </nav>
   );
 };

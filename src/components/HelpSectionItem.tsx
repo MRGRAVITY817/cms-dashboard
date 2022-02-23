@@ -46,7 +46,7 @@ export const HelpSectionItem: FC<HelpSectionItemProps> = ({
 
   return (
     <Link href="#">
-      <a className="bg-white p-6 rounded-md shadow-md flex gap-8 items-center justify-start w-full">
+      <a className="bg-white p-6 rounded-md shadow-sm flex gap-8 items-center justify-start w-full">
         <div
           className={`${outerColor()} w-16 h-16 flex items-center justify-center rounded-sm`}
         >

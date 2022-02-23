@@ -57,7 +57,7 @@ export default function Home() {
         </section>
         <section
           id="community-section"
-          className="shadow-md rounded-md bg-white p-6 w-1/3"
+          className="shadow-sm rounded-md bg-white p-6 w-1/3"
         >
           <div>
             <h3>Join the community</h3>

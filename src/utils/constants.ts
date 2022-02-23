@@ -1,5 +1,3 @@
-export const FIELDS = ["id", "name", "createdat", "updatedat", "state"];
-
 export const COMMUNITIES = [
   {
     src: "/community/github.png",

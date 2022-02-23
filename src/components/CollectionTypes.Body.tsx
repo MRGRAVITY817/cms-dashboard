@@ -1,19 +1,12 @@
-import { FIELDS } from "@utils/constants";
-import { FC, useState } from "react";
+import { FC, MouseEvent } from "react";
 import {
   IoIosColorFilter,
   IoIosSearch,
   IoIosSettings,
   IoMdArrowDropdown,
 } from "react-icons/io";
-import {
-  CheckIcon,
-  FolderAddIcon,
-  PencilAltIcon,
-} from "@heroicons/react/outline";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { EntryProps, TableData } from "@utils/mockData";
+import { PencilAltIcon, PencilIcon, TrashIcon } from "@heroicons/react/outline";
+import { EntryProps, FieldType, TableData } from "@utils/mockData";
 
 interface CollectionTypesBodyProps {
   tableFields: EntryProps[];
@@ -24,28 +17,34 @@ export const CollectionTypesBody: FC<CollectionTypesBodyProps> = ({
   tableFields,
   tableData,
 }) => {
-  const [selectAll, setSelectAll] = useState<boolean>(false);
-  const [data, setData] = useState<TableData>(tableData);
-  const router = useRouter();
+  const toggleCheckAll = (
+    e: MouseEvent<HTMLInputElement, globalThis.MouseEvent>
+  ) => {
+    if (typeof window !== "undefined") {
+      document
+        .querySelectorAll("input")
+        .forEach((input) => (input.checked = e.currentTarget.checked));
+    }
+  };
 
   return (
     <main id={`collection-types body`} className="mt-20">
-      <div id="content-header" className="flex justify-between items-center">
+      <div id="content-header" className="flex items-center justify-between">
         <div id="content-search" className="flex">
-          <button className="bg-white border border-slate-200 mr-2 px-2 py-1 rounded-md">
+          <button className="mr-2 rounded-md border border-slate-200 bg-white px-2 py-1">
             <IoIosSearch size="1.5rem" />
           </button>
-          <button className="flex items-center gap-1 bg-white border justify-center border-slate-200 px-2 py-1 rounded-md">
+          <button className="flex items-center justify-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1">
             <IoIosColorFilter size="1.5rem" />
             Filters
           </button>
         </div>
         <div id="content-setting" className="flex">
-          <button className="bg-white border border-slate-200 mr-2 flex items-center gap-1 justify-center px-2 py-1 rounded-md">
+          <button className="mr-2 flex items-center justify-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1">
             4 currently selected
             <IoMdArrowDropdown size="1rem" />
           </button>
-          <button className="flex items-center gap-1 justify-center border bg-white border-slate-200 px-2 py-1 rounded-md">
+          <button className="flex items-center justify-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1">
             <IoIosSettings size="1.5rem" />
             Filters
           </button>
@@ -53,76 +52,55 @@ export const CollectionTypesBody: FC<CollectionTypesBodyProps> = ({
       </div>
       <div
         id="content-table"
-        className="shadow-md bg-white p-4 mt-6 rounded-md"
+        className="mt-6 rounded-md bg-white p-4 shadow-sm"
       >
         <table className="min-w-full table-fixed">
           <thead>
-            <tr className="">
-              <th className="pb-4">
-                <button
-                  className={`w-6 h-6 border-2 border-slate-700 flex items-center justify-center rounded-sm`}
-                >
-                  <CheckIcon className="w-4" />
-                </button>
+            <tr>
+              <th className="pb-4 pr-4 text-left">
+                <input onClick={toggleCheckAll} type="checkbox" />
               </th>
-              {tableFields.map((field) => (
-                <th
-                  scope="col"
-                  key={`field-${field.name}-${field.type}`}
-                  className="text-left pb-4"
-                >
-                  <button className="font-medium uppercase">
-                    {field.name}
-                  </button>
-                </th>
-              ))}
+              {tableFields
+                .filter((field) => field.type !== "password")
+                .map((field) => (
+                  <th
+                    scope="col"
+                    key={`field-${field.name}-${field.type}`}
+                    className="pb-4 text-left"
+                  >
+                    <button className="font-medium uppercase">
+                      {field.name}
+                    </button>
+                  </th>
+                ))}
               <th scope="col">
                 <span className="sr-only">Edit and Delete</span>
               </th>
             </tr>
           </thead>
           <tbody className="border-t">
-            {data.map((row, idx) => (
+            {tableData.map((row, idx) => (
               <tr key={`row-${idx}`}>
                 <td className="py-4">
-                  <button
-                    className={`w-6 h-6 border-2 border-slate-700 flex items-center justify-center rounded-sm`}
-                  >
-                    <CheckIcon className="w-4" />
-                  </button>
+                  <input id="row-checkbox" type="checkbox" />
                 </td>
-                {row.map((item) => (
-                  <td
-                    key={`item-${idx}-${item.field}-${item.type}`}
-                    className="py-4"
-                  >
-                    {item.type === "long" ? (
-                      <button className="flex items-center justify-start gap-2 bg-indigo-100 border text-indigo-700 border-indigo-700 hover:bg-indigo-50 px-2 py-1 rounded-sm text-xs">
-                        More <PencilAltIcon className="w-4" />
-                      </button>
-                    ) : item.type === "tags" ? (
-                      <div className="flex items-center justify-start gap-1 flex-wrap">
-                        {item.data.split(",").map((tag) => (
-                          <p
-                            key={`tag-${idx}-${item.field}-${tag}`}
-                            className="p-1 border border-indigo-700 bg-indigo-100 rounded-sm text-xs text-indigo-700"
-                          >
-                            {tag}
-                          </p>
-                        ))}
-                      </div>
-                    ) : (
-                      <p>{item.data}</p>
-                    )}
-                  </td>
-                ))}
+                {row
+                  .filter((item) => item.type !== "password")
+                  .map((item) => (
+                    <td
+                      key={`item-${idx}-${item.field}-${item.type}`}
+                      className="py-4"
+                    >
+                      <FieldData type={item.type} data={item.data} />
+                    </td>
+                  ))}
                 <td>
-                  <div className="flex items-center justify-start gap-2">
-                    <button className="text-indigo-600 font-normal">
-                      Edit
+                  <div className="flex items-center justify-start gap-4">
+                    <button className="font-normal text-indigo-600">
+                      <PencilIcon className="w-4" />
                     </button>
-                    <button className="text-slate-400 font-normal">
-                      Delete
+                    <button className="font-normal text-slate-400">
+                      <TrashIcon className="w-4" />
                     </button>
                   </div>
                 </td>
@@ -133,4 +111,30 @@ export const CollectionTypesBody: FC<CollectionTypesBodyProps> = ({
       </div>
     </main>
   );
+};
+
+const FieldData: FC<{ type: FieldType; data: string }> = ({ type, data }) => {
+  switch (type) {
+    case "long":
+      return (
+        <button className="flex items-center justify-start gap-2 rounded-sm border border-indigo-700 bg-indigo-100 px-2 py-1 text-xs font-normal text-indigo-700 hover:bg-indigo-50">
+          More <PencilAltIcon className="w-4" />
+        </button>
+      );
+    case "tags":
+      return (
+        <div className="flex flex-wrap items-center justify-start gap-1">
+          {data.split(",").map((tag, i) => (
+            <p
+              key={`tag-${tag}-${i}`}
+              className="rounded-sm border border-indigo-700 bg-indigo-100 p-1 text-xs text-indigo-700"
+            >
+              {tag}
+            </p>
+          ))}
+        </div>
+      );
+    default:
+      return <p>{data}</p>;
+  }
 };
