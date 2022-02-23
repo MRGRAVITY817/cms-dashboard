@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FC, ReactElement } from "react";
 
 interface HelpSectionItemProps {
+  href?: string;
   color: "indigo" | "orange" | "teal" | "purple";
   icon: ReactElement;
   title: string;
@@ -9,6 +10,7 @@ interface HelpSectionItemProps {
 }
 
 export const HelpSectionItem: FC<HelpSectionItemProps> = ({
+  href = "#",
   color,
   icon,
   title,
@@ -45,13 +47,13 @@ export const HelpSectionItem: FC<HelpSectionItemProps> = ({
   };
 
   return (
-    <Link href="#">
-      <a className="bg-white p-6 rounded-md shadow-sm flex gap-8 items-center justify-start w-full">
+    <Link href={href}>
+      <a className="flex w-full items-center justify-start gap-8 rounded-md bg-white p-6 shadow-sm">
         <div
-          className={`${outerColor()} w-16 h-16 flex items-center justify-center rounded-sm`}
+          className={`${outerColor()} flex h-16 w-16 items-center justify-center rounded-sm`}
         >
           <div
-            className={`${innerColor()} w-10 h-10 flex items-center justify-center rounded-sm`}
+            className={`${innerColor()} flex h-10 w-10 items-center justify-center rounded-sm`}
           >
             {icon}
           </div>

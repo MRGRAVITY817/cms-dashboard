@@ -8,7 +8,7 @@ import {
 import { ContentManagerLayout } from "@layouts/ContentManager.Layout";
 import { SINGLE_TYPES } from "@utils/mockData";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface SingleTypesProps {
   name?: string;

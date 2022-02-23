@@ -2,11 +2,11 @@ import { FC, MouseEvent } from "react";
 import {
   IoIosColorFilter,
   IoIosSearch,
-  IoIosSettings,
   IoMdArrowDropdown,
 } from "react-icons/io";
 import { PencilAltIcon, PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import { EntryProps, FieldType, TableData } from "@utils/mockData";
+import { AiOutlineSetting } from "react-icons/ai";
 
 interface CollectionTypesBodyProps {
   tableFields: EntryProps[];
@@ -45,8 +45,8 @@ export const CollectionTypesBody: FC<CollectionTypesBodyProps> = ({
             <IoMdArrowDropdown size="1rem" />
           </button>
           <button className="flex items-center justify-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1">
-            <IoIosSettings size="1.5rem" />
-            Filters
+            <AiOutlineSetting size="1.5rem" />
+            Setting
           </button>
         </div>
       </div>

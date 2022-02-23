@@ -16,11 +16,11 @@ export const SecondaryNavSection: FC<SecondaryNavSectionProps> = ({
   return (
     <section
       id={`${title} section`}
-      className="grid grid-flow-row gap-2 items-start"
+      className="grid grid-flow-row items-start gap-2"
     >
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <h3
-          className="cursor-pointer flex items-center justify-start gap-4"
+          className="flex cursor-pointer items-center justify-start gap-4 pl-4"
           onClick={() => setHideItems(!hideItems)}
         >
           {title}{" "}
